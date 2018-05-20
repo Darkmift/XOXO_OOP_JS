@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>XOXO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="http://pre11.deviantart.net/3944/th/pre/i/2012/122/6/9/cookie_monster_by_neorame-d4yb0b5.png" />
+  <!--Jquery-->
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+  <!--Bootstrap 3.3.7-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+  <div class="flex-container">
+    <div class="row">
+      <div class="flex-item">
+        <!--tictac start-->
+        <span class="game-title" id="message">The player X</span>
+        <div class="game">
+          <div class="game-item" data-ceil="1"></div>
+          <div class="game-item" data-ceil="2"></div>
+          <div class="game-item" data-ceil="3"></div>
+          <div class="game-item" data-ceil="4"></div>
+          <div class="game-item" data-ceil="5"></div>
+          <div class="game-item" data-ceil="6"></div>
+          <div class="game-item" data-ceil="7"></div>
+          <div class="game-item" data-ceil="8"></div>
+          <div class="game-item" data-ceil="9"></div>
+        </div>
+        <button style="display:none;" class="btn btn-default" id="reset-game">Reset Board</button>
+        <br>
+        <br>
+        <!--tictac end-->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //set css/js links with random string for caching issues prevention
+    var csshref = 'css.css';
+    var jshref = 'main.js';
+    var date = new Date().getTime();
+    $('<link>', {
+      rel: "stylesheet",
+      type: "text/css",
+      href: csshref + "?" + date,
+      func: function() {
+        console.log($(this))
+      }
+    }).appendTo($('head'));
+    $('<script>', {
+      src: jshref + '?' + date,
+      func: function() {
+        console.log($(this))
+      }
+    }).appendTo($('body'));
+  </script>
+
+  <body>
+
+</html>
