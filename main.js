@@ -1,6 +1,6 @@
 var cl = console.log.bind(console);
 cl("js online");
-
+// debugger;
 $(document).ready(function() {
     $(".flex-item").hide(0).delay(500).fadeIn(3000)
 });
@@ -58,7 +58,10 @@ class Game {
 
         function currentStep() {
             play('audioClick');
-            reset.style.display = "inline-block";
+            if (reset.style.display != "inline-block") {
+                reset.style.display = "inline-block";
+            }
+
 
             var num = +this.getAttribute("data-ceil");
             if (!this.textContent) {
@@ -74,7 +77,7 @@ class Game {
                     for (var i = 0; i < ceil.length; i++) {
                         ceil[i].removeEventListener("click", currentStep);
                     }
-                    return (play('audioWin'), message.innerText = "Player " + z + " wins!");
+                    return (message.innerText = "Player " + z + " wins!");
                 }
 
                 changePlayer();
@@ -98,7 +101,12 @@ class Game {
                         if (arr.indexOf(someWinArr[k]) !== -1) {
                             count++;
                             if (count === 3) {
+                                play('audioWin');
                                 reset.innerText = "Play again?";
+                                reset.style.display = "none";
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 3500);
                                 return true;
                             }
                         }
@@ -113,7 +121,7 @@ class Game {
         reset.addEventListener("click", function() {
             play('audioClick');
             reset.style.display = "none";
-            // reset.innerText = "Reset Board";
+            reset.innerText = "Reset Board";
             for (var i = 0; i < ceil.length; i++) {
                 ceil[i].innerText = "";
             }
