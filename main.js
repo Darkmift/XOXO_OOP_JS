@@ -1,6 +1,10 @@
 var cl = console.log.bind(console);
 cl("js online");
 
+$(document).ready(function() {
+    $(".flex-item").hide(0).delay(500).fadeIn(3000)
+});
+
 var ceil = document.getElementsByClassName("game-item"),
     reset = document.getElementById("reset-game"),
     message = document.getElementById("message"),
