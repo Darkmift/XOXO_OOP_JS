@@ -22,13 +22,13 @@ var ceil = document.getElementsByClassName("game-item"),
     dataX = [],
     dataO = [];
 
-function play() {
-    var myAudio = document.getElementById("audio");
+function play(audioId) {
+    var myAudio = document.getElementById(audioId);
     if (myAudio.duration > 0 && !myAudio.paused) {
-        audio.pause();
-        audio.currentTime = 0
+        myAudio.pause();
+        myAudio.currentTime = 0
     }
-    audio.play();
+    myAudio.play();
 }
 
 class Player {
@@ -57,7 +57,7 @@ class Game {
         var z = this.currentPlayer;
 
         function currentStep() {
-            play();
+            play('audioClick');
             reset.style.display = "inline-block";
 
             var num = +this.getAttribute("data-ceil");
@@ -74,7 +74,7 @@ class Game {
                     for (var i = 0; i < ceil.length; i++) {
                         ceil[i].removeEventListener("click", currentStep);
                     }
-                    return (message.innerText = "Player " + z + " wins!");
+                    return (play('audioWin'), message.innerText = "Player " + z + " wins!");
                 }
 
                 changePlayer();
@@ -111,7 +111,7 @@ class Game {
 
     reset() {
         reset.addEventListener("click", function() {
-            play();
+            play('audioClick');
             reset.style.display = "none";
             // reset.innerText = "Reset Board";
             for (var i = 0; i < ceil.length; i++) {
