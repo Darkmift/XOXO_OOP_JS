@@ -22,6 +22,15 @@ var ceil = document.getElementsByClassName("game-item"),
     dataX = [],
     dataO = [];
 
+function play() {
+    var myAudio = document.getElementById("audio");
+    if (myAudio.duration > 0 && !myAudio.paused) {
+        audio.pause();
+        audio.currentTime = 0
+    }
+    audio.play();
+}
+
 class Player {
 
     constructor(name) {
@@ -48,7 +57,7 @@ class Game {
         var z = this.currentPlayer;
 
         function currentStep() {
-
+            play();
             reset.style.display = "inline-block";
 
             var num = +this.getAttribute("data-ceil");
@@ -102,6 +111,7 @@ class Game {
 
     reset() {
         reset.addEventListener("click", function() {
+            play();
             reset.style.display = "none";
             // reset.innerText = "Reset Board";
             for (var i = 0; i < ceil.length; i++) {
